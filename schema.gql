@@ -1,0 +1,228 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type ResLogin {
+  """액세스 토큰"""
+  accessToken: String!
+
+  """리프레쉬 토큰"""
+  refreshToken: String!
+}
+
+type ResPublicSvcResult {
+  """요청결과 - 코드"""
+  CODE: String!
+
+  """요청결과 - 메시지"""
+  MESSAGE: String!
+}
+
+type ResTvYeyakCOllect {
+  """총 데이터 건수"""
+  list_total_count: Float!
+
+  """요청결과"""
+  RESULT: ResPublicSvcResult!
+
+  """공공 서비스 데이터 목록"""
+  row: [ResPublicSvcRow!]!
+}
+
+type ResPublicSvcs {
+  """공공서비스 종합 정보"""
+  tvYeyakCOllect: ResTvYeyakCOllect!
+}
+
+type ResPublicSvcRow {
+  DIV: String!
+  SERVICE: String!
+  GUBUN: String!
+  SVCID: String!
+  MAXCLASSNM: String!
+  MINCLASSNM: String!
+  SVCSTATNM: String!
+  SVCNM: String!
+  PAYATNM: String!
+  PLACENM: String!
+  USETGTINFO: String!
+  SVCURL: String!
+  X: String!
+  Y: String!
+  SVCOPNBGNDT: String!
+  SVCOPNENDDT: String!
+  RCPTBGNDT: String!
+  RCPTENDDT: String!
+  AREANM: String!
+  IMGURL: String!
+  DTLCONT: String!
+  TELNO: String!
+  V_MAX: String!
+  V_MIN: String!
+  REVSTDDAY: Float!
+  REVSTDDAYNM: String!
+}
+
+type ResListPublicReservationDetail {
+  """총 데이터 건수"""
+  list_total_count: Float!
+
+  """요청결과"""
+  RESULT: ResPublicSvcResult!
+
+  """공공서비스 상세 정보 """
+  row: [ResPublicSvcDetailRow!]!
+}
+
+type ResPublicSvcDetail {
+  """공공서비스 상세 정보"""
+  ListPublicReservationDetail: ResListPublicReservationDetail!
+}
+
+type ResPublicSvcDetailRow {
+  SVCID: String!
+  SVCNM: String!
+  FEEGUIDURL: String!
+  SVCBEGINDT: String!
+  SVCENDDT: String!
+  PLACESN: String!
+  PLACENM: String!
+  SUBPLACENM: String!
+  PAYAT: String!
+  RCPTMTHD: String!
+  RCEPTMTH_NM: String!
+  RCEPTBEGDT: String!
+  RCEPTENDDT: String!
+  RCRPERCAP: String!
+  UNITCODE: String!
+  UNICODE_NM: String!
+  SELMTHDCODE: String!
+  SELMTHDCODE_NM: String!
+  SVCENDTELNO: String!
+  SVCENDUSRSN: String!
+  ORGNM: String!
+  ONEREQMINPR: Float!
+  ONEREQMXMPR: Float!
+  SVCSTTUS: String!
+  SVCSTTUS_NM: String!
+  REVSTDDAY: String!
+  CODE: String!
+  CODENM: String!
+  SMCODE: String!
+  SMCODE_NM: String!
+  WAITNUM: Float!
+  USETIMEUNITCODE: String!
+  USETIMEUNITCODE_NM: String!
+  USEDAYSTDRCPTDAY: String!
+  USEDAYSTDRCPTTIME: String!
+  RSVDAYSTDRCPTDAY: String!
+  RSVDAYSTDRCPTTIME: String!
+  USELIMMINNOP: Float!
+  USELIMMAXNOP: Float!
+  EXTINFO: String!
+  X: String!
+  Y: String!
+  ADRES: String!
+  TELNO: String!
+  SVCOPNBGNDT: String!
+  SVCOPNENDDT: String!
+  RCPTBGNDT: String!
+  RCPTENDDT: String!
+  AREANM: String!
+  NOTICE: String!
+  IMG_PATH: String!
+  DTLCONT: String!
+  V_MAX: String!
+  V_MIN: String!
+  REVSTDDAYNM: String!
+}
+
+type Service {
+  id: ID!
+  externalId: String!
+  item: ResPublicSvcDetail!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime!
+}
+
+type Query {
+  """공공서비스 목록 조회"""
+  getPublicSvcs(payload: ReqPublicSvcInput!): ResPublicSvcs!
+
+  """공공서비스 상세 조회"""
+  getPublicSvcDetail(payload: ReqPublicSvcDetailInput!): ResPublicSvcDetail!
+
+  """사용자별로 담은 공공서비스 목록 조회"""
+  getPublicSvcByUserId: [Service!]!
+}
+
+input ReqPublicSvcInput {
+  """페이지"""
+  page: Float!
+
+  """페이지 당 개수"""
+  perPage: Float!
+}
+
+input ReqPublicSvcDetailInput {
+  """서비스 id"""
+  SVCID: String!
+}
+
+type Mutation {
+  """회원가입"""
+  createUser(payload: ReqCreateUserInput!): User!
+
+  """이메일 인증코드 발송"""
+  sendAuthCodeEmail(email: String!): Boolean!
+
+  """이메일에 따른 인증코드 확인"""
+  confirmAuthCode(payload: ReqConfirmAuth!): Boolean!
+
+  """로그인"""
+  logIn(payload: ReqLoginInput!): ResLogin!
+  addPublicSvcByUser(payload: ReqPublicSvcDetailInput!): String!
+}
+
+input ReqCreateUserInput {
+  """이름"""
+  name: String!
+
+  """이메일"""
+  email: String!
+
+  """비밀번호"""
+  password: String!
+}
+
+input ReqConfirmAuth {
+  """이메일"""
+  email: String!
+
+  """인증번호"""
+  authCode: String!
+}
+
+input ReqLoginInput {
+  """이메일"""
+  email: String!
+
+  """비밀번호"""
+  password: String!
+}
