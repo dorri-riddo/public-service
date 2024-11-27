@@ -30,6 +30,12 @@ export class PublicSvcService {
     return result;
   }
 
+  /**
+   * 공공서비스 상세 조회
+   *
+   * @param payload
+   * @returns
+   */
   async getPublicSvcDetail(
     payload: ReqPublicSvcDetailInput,
   ): Promise<ResPublicSvcDetail> {
@@ -44,10 +50,23 @@ export class PublicSvcService {
     return result;
   }
 
+  /**
+   * 사용자별 공공서비스 목록 조회
+   *
+   * @param userId
+   * @returns
+   */
   async getPublicSvcByUserId(userId: number): Promise<Service[]> {
     return await this.repo.findByUserId(userId);
   }
 
+  /**
+   * 사용자별 공공서비스 추가
+   *
+   * @param payload
+   * @param userId
+   * @returns
+   */
   async addPublicSvcByUser(
     payload: ReqPublicSvcDetailInput,
     userId: number,
