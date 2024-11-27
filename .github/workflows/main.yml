@@ -29,4 +29,3 @@ jobs:
 
     - name: Build Project
       run: npm run build
-주요 개선 사항:
