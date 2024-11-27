@@ -4,7 +4,7 @@ import { ResPublicSvcDetail, ResPublicSvcs } from './dto/resp';
 import { ReqPublicSvcDetailInput, ReqPublicSvcInput } from './dto/req';
 import { PublicSvcRepository } from './publicSvc.repository';
 import { Service } from './service.model';
-import { ServiceMapping } from './ServiceMapping.model';
+import { ServiceMapping } from './serviceMapping.model';
 
 @Injectable()
 export class PublicSvcService {

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeepPartial, Repository } from 'typeorm';
 import { Service } from './service.model';
-import { ServiceMapping } from './ServiceMapping.model';
+import { ServiceMapping } from './serviceMapping.model';
 
 @Injectable()
 export class PublicSvcRepository {
