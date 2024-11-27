@@ -4,7 +4,7 @@ import { PublicSvcService } from './publicSvc.service';
 import { PublicSvcResolver } from './publicSvc.resolver';
 import { PublicSvcRepository } from './publicSvc.repository';
 import { Service } from './service.model';
-import { ServiceMapping } from './ServiceMapping.model';
+import { ServiceMapping } from './serviceMapping.model';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Service, ServiceMapping])],
