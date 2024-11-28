@@ -198,6 +198,7 @@ type Mutation {
   """로그인"""
   logIn(payload: ReqLoginInput!): ResLogin!
   addPublicSvcByUser(payload: ReqPublicSvcDetailInput!): String!
+  deletePublicSvcByUser(id: Float!): String!
 }
 
 input ReqCreateUserInput {

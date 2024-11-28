@@ -92,4 +92,14 @@ export class PublicSvcService {
     Object.assign(mapping, { serviceId: newService.id, userId });
     await this.repo.createMapping({ serviceId: newService.id, userId });
   }
+
+  /**
+   * 사용자별 공공서비스 삭제
+   *
+   * @param id
+   * @param userId
+   */
+  async deletePublicSvcByUser(id: number, userId: number): Promise<void> {
+    await this.repo.deleteMapping(id, userId);
+  }
 }

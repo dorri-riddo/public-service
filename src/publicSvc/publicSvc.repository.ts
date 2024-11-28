@@ -36,4 +36,8 @@ export class PublicSvcRepository {
   async createMapping(payload: DeepPartial<ServiceMapping>): Promise<void> {
     await this.mappingRepo.save(payload);
   }
+
+  async deleteMapping(id: number, userId: number): Promise<void> {
+    await this.mappingRepo.softDelete({ id, userId });
+  }
 }
