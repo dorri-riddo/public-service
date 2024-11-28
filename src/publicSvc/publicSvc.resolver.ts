@@ -45,4 +45,16 @@ export class PublicSvcResolver {
     await this.service.addPublicSvcByUser(payload, user.userId);
     return 'ok';
   }
+
+  @Mutation(() => String)
+  @UseGuards(RolesGuard)
+  async deletePublicSvcByUser(
+    @Args('id') id: number,
+    @Context() context: any,
+  ): Promise<string> {
+    const user = context.req.user;
+
+    await this.service.deletePublicSvcByUser(id, user.userId);
+    return 'ok';
+  }
 }
