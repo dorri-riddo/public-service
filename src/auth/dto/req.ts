@@ -12,10 +12,10 @@ export class ReqConfirmAuth {
 
 @InputType()
 export class ReqLoginInput {
-  @Field({ description: '이메일' })
+  @Field(() => String, { description: '이메일' })
   email: string;
 
-  @Field({ description: '비밀번호' })
+  @Field(() => String, { description: '비밀번호' })
   password: string;
 }
 
