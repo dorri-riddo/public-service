@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { MailerService } from '@nestjs-modules/mailer';
 import { JwtService } from '@nestjs/jwt';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { BadRequestException } from '@nestjs/common';
 
 import { DataSource } from 'typeorm';
 
@@ -9,7 +10,6 @@ import { AuthService } from '../auth.service';
 import { AuthRepository } from '../auth.repository';
 import { Auth } from '../auth.model';
 import { User } from '../../user/user.model';
-import { BadRequestException } from '@nestjs/common';
 
 describe('AuthService', () => {
   let service: AuthService;
