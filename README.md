@@ -40,20 +40,23 @@ You need an env file
 
 ```bash
 # development
-$ npm run start
+$ yarn start
 
 # watch mode
-$ npm run start:dev
+$ yarn start:dev
 
 # production mode
-$ npm run start:prod
+$ yarn start:prod
 ```
 
 ## Test
 
 ```bash
 # unit tests
-$ npm run test
+$ yarn test
+
+# e2e tests
+$ yarn test:e2e
 ```
 
 ## Stay in touch
