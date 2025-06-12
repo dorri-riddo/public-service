@@ -1,8 +1,10 @@
 ## Description
 
 공공데이터를 활용하여 공공서비스 목록 및 상세 서비스를 활용할 수 있는 앱
+graphql API 학습용 앱
 <br />
 An app that utilizes public data to access a list of public services and detailed service information
+Apps for learning the graphql API
 
 ## Database Schema
 
